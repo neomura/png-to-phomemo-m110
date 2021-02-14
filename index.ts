@@ -62,17 +62,20 @@ runMain(async () => {
             let byte = 0;
 
             for (let bit = 0; bit < 8; bit++) {
-              if (this.data[y * this.width * 4 + x * 4 + 3] !== 255) {
+              if (
+                this.data[y * this.width * 4 + x * 32 + bit * 4 + 3] !== 255
+              ) {
                 reject(
                   `The PNG cannot contain partially or fully transparent pixels.`
                 );
               }
 
-              switch (this.data[y * this.width * 4 + x * 4]) {
+              switch (this.data[y * this.width * 4 + x * 32 + bit * 4]) {
                 case 0:
                   if (
-                    this.data[y * this.width * 4 + x * 4 + 1] !== 0 ||
-                    this.data[y * this.width * 4 + x * 4 + 2] !== 0
+                    this.data[y * this.width * 4 + x * 32 + bit * 4 + 1] !==
+                      0 ||
+                    this.data[y * this.width * 4 + x * 32 + bit * 4 + 2] !== 0
                   ) {
                     reject(
                       `The PNG cannot contain pixels which are not black or white.`
@@ -84,8 +87,9 @@ runMain(async () => {
 
                 case 255:
                   if (
-                    this.data[y * this.width * 4 + x * 4 + 1] !== 255 ||
-                    this.data[y * this.width * 4 + x * 4 + 2] !== 255
+                    this.data[y * this.width * 4 + x * 32 + bit * 4 + 1] !==
+                      255 ||
+                    this.data[y * this.width * 4 + x * 32 + bit * 4 + 2] !== 255
                   ) {
                     reject(
                       `The PNG cannot contain pixels which are not black or white.`
