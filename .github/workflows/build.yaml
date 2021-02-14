@@ -1,0 +1,38 @@
+on: [push, release]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+        - windows-2019
+        - windows-2016
+        - ubuntu-20.04
+        - ubuntu-18.04
+        - macos-11.0
+        - macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm ci
+    - run: npm run-script build
+  release:
+    if: github.event_name == 'release' && github.event.action == 'created'
+    needs: test
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: npm ci
+    - run: npm run-script build
+    - run: "sed -i \"s/\\\"version\\\": \\\"0.0.0\\\",/\\\"version\\\": \\\"${GITHUB_REF/refs\\/tags\\/v/}\\\",/g\" package.json"
+    - run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

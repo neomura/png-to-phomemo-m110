@@ -1,0 +1,57 @@
+{
+  "name": "@neomura/png-to-phomena-m110",
+  "description": "Command-line tool to convert PNG streams to streams which can be forwarded to Phomena M110 label printers.",
+  "version": "0.0.0",
+  "engines": {
+    "node": ">=14.15.3"
+  },
+  "engineStrict": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "!**/unit.*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neomura/png-to-phomena-m110"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.2",
+    "@types/jasmine": "3.6.2",
+    "@types/pngjs": "^3.4.2",
+    "@typescript-eslint/eslint-plugin": "4.10.0",
+    "@typescript-eslint/parser": "4.10.0",
+    "cross-spawn": "^7.0.3",
+    "del-cli": "3.0.1",
+    "eslint": "7.15.0",
+    "eslint-config-prettier": "7.0.0",
+    "eslint-plugin-prettier": "3.3.0",
+    "jasmine": "3.6.3",
+    "npm-run-all": "4.1.5",
+    "nyc": "15.1.0",
+    "prettier": "2.2.1",
+    "typescript": "4.1.3"
+  },
+  "scripts": {
+    "buildClean": "del-cli \"**/*.js\" \"**/*.d.ts\" \"!**/node_modules/**/*\"",
+    "buildLint": "eslint \"**/*.ts\"",
+    "buildTypeScript": "tsc",
+    "buildNyc": "nyc --check-coverage --all --exclude \"**/*.ts\" --exclude \"**/*.d.ts\" --exclude \"**/unit.*\" --lines 100 --functions 100 --branches 100 --statements 100 npm run-script buildJasmine",
+    "buildJasmine": "jasmine --config=jasmine.json",
+    "build": "npm-run-all buildClean buildLint buildTypeScript buildNyc"
+  },
+  "types": "index.d.ts",
+  "sideEffects": false,
+  "bin": {
+    "neomura-png-to-phomena-m110": "./index.js"
+  },
+  "dependencies": {
+    "@neomura/js-command-line-helpers": "0.0.0",
+    "pngjs": "6.0.0"
+  }
+}
