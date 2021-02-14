@@ -53,8 +53,8 @@ helpTextScenario(
   `help`,
   [`--help`],
   0,
-  `neomura-png-to-phomena-m110 (0.0.0) - Command-line tool to convert PNG streams to streams which can be forwarded to Phomena M110 label printers.
-  usage: neomura-png-to-phomena-m110 (0.0.0) [options]
+  `neomura-png-to-phomemo-m110 (0.0.0) - Command-line tool to convert PNG streams to streams which can be forwarded to Phomemo M110 label printers.
+  usage: neomura-png-to-phomemo-m110 (0.0.0) [options]
   options:
     -h, --help, /?: display this message
 `,
