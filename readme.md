@@ -10,6 +10,8 @@ Command-line tool to convert PNG streams to streams which can be forwarded to Ph
 
 ## Installation/usage
 
+PNG files fed into the application must be fully opaque and black and white.  The unit appears to be 203DPI.  Images will be placed in the top right corner of a label if they do not fill it.  As the included labels are 40x30mm, this makes for approximately 320x240.
+
 ### Version tracked to project-local package.json (recommended)
 
 Within a terminal in the same directory as the package.json:
