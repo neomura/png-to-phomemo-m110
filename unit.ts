@@ -294,7 +294,7 @@ describe(`when the standard output is not writable`, () => {
 
   it(`generates the expected stderr`, () => {
     expect(actualStderr).toMatch(
-      /^(?:\r\n|\n|.)*\r?\nError: write EPIPE\r?\n(?:\r\n|\n|.)*$/
+      /^(?:\r\n|\n|.)*\r?\n(?:Error: write EPIPE|Error: EPIPE: broken pipe, write)\r?\n(?:\r\n|\n|.)*$/
     );
   });
 });
