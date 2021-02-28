@@ -25,7 +25,7 @@ runMain(async () => {
           reject(`The PNG's width cannot be greater than 524287.`);
         }
 
-        if (this.width > 65535) {
+        if (this.height > 65535) {
           reject(`The PNG's height cannot be greater than 65535.`);
         }
 
