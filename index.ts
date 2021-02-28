@@ -35,19 +35,23 @@ runMain(async () => {
 
         const bytes = new Uint8Array(8 + (this.width / 8) * this.height);
 
-        // Magic number.
-        bytes[0] = 0x1d;
-        bytes[1] = 0x76;
-        bytes[2] = 0x30;
-        bytes[3] = 0x00;
+        // ESC @.
+        bytes[0] = 0x1b;
+        bytes[1] = 0x40;
+
+        // GS v 0.
+        bytes[2] = 0x1d;
+        bytes[3] = 0x76;
+        bytes[4] = 0x30;
+        bytes[5] = 0x00;
 
         // Width.
-        bytes[4] = Math.floor(this.width / 8) % 256;
-        bytes[5] = Math.floor(this.width / 8) / 256;
+        bytes[6] = Math.floor(this.width / 8) % 256;
+        bytes[7] = Math.floor(this.width / 8) / 256;
 
         // Height.
-        bytes[6] = this.height % 256;
-        bytes[7] = this.height / 256;
+        bytes[8] = this.height % 256;
+        bytes[9] = this.height / 256;
 
         for (let y = 0; y < this.height; y++) {
           for (let x = 0; x < this.width / 8; x++) {
@@ -96,7 +100,7 @@ runMain(async () => {
               }
             }
 
-            bytes[8 + (y * this.width) / 8 + x] = byte;
+            bytes[10 + (y * this.width) / 8 + x] = byte;
           }
         }
 
