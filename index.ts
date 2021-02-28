@@ -21,14 +21,6 @@ runMain(async () => {
     process.stdin
       .pipe(new PNG())
       .on(`parsed`, function () {
-        if (this.width < 1) {
-          reject(`The PNG's width cannot be less than 1.`);
-        }
-
-        if (this.height < 1) {
-          reject(`The PNG's height cannot be less than 1.`);
-        }
-
         if (this.width > 524287) {
           reject(`The PNG's width cannot be greater than 524287.`);
         }
