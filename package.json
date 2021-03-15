@@ -51,7 +51,7 @@
     "neomura-png-to-phomemo-m110": "./index.js"
   },
   "dependencies": {
-    "@neomura/js-command-line-helpers": "1.0.1",
+    "@neomura/js-command-line-helpers": "1.1.0",
     "pngjs": "6.0.0"
   }
 }
