@@ -14,6 +14,8 @@ runMain(async () => {
     {
       strings: {},
       integers: {},
+      enums: {},
+      booleans: {},
     }
   );
 
