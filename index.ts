@@ -8,16 +8,12 @@ import {
 } from "@neomura/js-command-line-helpers";
 
 runMain(async () => {
-  parseCommandLineArguments(
-    `${Object.keys(bin)} (${version})`,
-    `${description}`,
-    {
-      strings: {},
-      integers: {},
-      enums: {},
-      booleans: {},
-    }
-  );
+  parseCommandLineArguments(Object.keys(bin)[0], version, description, {
+    strings: {},
+    integers: {},
+    enums: {},
+    booleans: {},
+  });
 
   await new Promise<void>((resolve, reject) => {
     process.stdin
