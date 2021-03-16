@@ -16,7 +16,7 @@ function helpTextScenario(
 
     beforeAll(async () => {
       await new Promise<void>((resolve, reject) => {
-        const childProcess = spawn(`node`, [`.`, ...args]);
+        const childProcess = spawn(`node`, [__dirname, ...args]);
 
         childProcess.stdout.on(`data`, (data) => {
           actualStdout += data;
@@ -53,8 +53,8 @@ helpTextScenario(
   `help`,
   [`--help`],
   0,
-  `neomura-png-to-phomemo-m110 (0.0.0) - Command-line tool to convert PNG streams to streams which can be forwarded to Phomemo M110 label printers.
-  usage: neomura-png-to-phomemo-m110 [options]
+  `neomura-phomemo-m110-png (0.0.0) - convert png data from standard input into a stream which can be forwarded to a phomemo m110 label printer.
+  usage: neomura-phomemo-m110-png [options]
   options:
     -h, --help, /?: display this message
 `,
@@ -76,7 +76,7 @@ function validScenario(
       expectedStdout = await promises.readFile(join(__dirname, ...expected));
 
       await new Promise<void>((resolve, reject) => {
-        const childProcess = spawn(`node`, [`.`]);
+        const childProcess = spawn(`node`, [__dirname]);
 
         childProcess.stdout.setEncoding(`binary`);
 
@@ -142,7 +142,7 @@ function invalidScenario(
 
     beforeAll(async () => {
       await new Promise<void>((resolve, reject) => {
-        const childProcess = spawn(`node`, [`.`]);
+        const childProcess = spawn(`node`, [__dirname]);
 
         childProcess.stdout.setEncoding(`binary`);
 
@@ -267,7 +267,7 @@ describe(`when the standard output is not writable`, () => {
 
   beforeAll(async () => {
     await new Promise<void>((resolve, reject) => {
-      const childProcess = spawn(`node`, [`.`]);
+      const childProcess = spawn(`node`, [__dirname]);
 
       childProcess.stdout.destroy();
 

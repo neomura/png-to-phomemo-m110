@@ -1,6 +1,6 @@
 # neomura/png-to-phomemo-m110
 
-Command-line tool to convert PNG streams to streams which can be forwarded to Phomemo M110 label printers.
+Command-line tools to generate streams which can be forwarded to Phomemo M110 label printers.
 
 [MIT licensed](./license.md).
 
@@ -20,18 +20,18 @@ Ensure that the COM port is set to "raw" mode to prevent data corruption (exampl
 
 Within a terminal in the same directory as the package.json:
 
-`npm install --save-dev @neomura/png-to-phomemo-m110`
+`npm install --save-dev @neomura/phomemo-m110`
 
 Then, to print to a file to the Phomemo M110 label printer on serial port 1:
 
-`npx neomura-png-to-phomemo-m110 < path-to-file.png > /dev/ttyS1`
+`npx neomura-phomemo-m110-png < path-to-file.png > /dev/ttyS1`
 
 ### Globally installed (not recommended)
 
 Within a terminal:
 
-`npm install --global @neomura/png-to-phomemo-m110`
+`npm install --global @neomura/phomemo-m110`
 
 Then, to print to a file to the Phomemo M110 label printer on serial port 1:
 
-`neomura-png-to-phomemo-m110 < path-to-file.png > /dev/ttyS1`
+`neomura-phomemo-m110-png < path-to-file.png > /dev/ttyS1`

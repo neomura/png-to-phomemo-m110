@@ -1,6 +1,6 @@
 {
-  "name": "@neomura/png-to-phomemo-m110",
-  "description": "Command-line tool to convert PNG streams to streams which can be forwarded to Phomemo M110 label printers.",
+  "name": "@neomura/phomemo-m110",
+  "description": "Command-line tools to generate streams which can be forwarded to Phomemo M110 label printers.",
   "version": "0.0.0",
   "engines": {
     "node": ">=14.15.3"
@@ -48,10 +48,10 @@
   "types": "index.d.ts",
   "sideEffects": false,
   "bin": {
-    "neomura-png-to-phomemo-m110": "./index.js"
+    "neomura-phomemo-m110-png": "./neomura-phomemo-m110-png/index.js"
   },
   "dependencies": {
-    "@neomura/js-command-line-helpers": "^3.0.0",
+    "@neomura/js-command-line-helpers": "3.0.0",
     "pngjs": "6.0.0"
   }
 }

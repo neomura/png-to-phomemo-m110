@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-import { version, description, bin } from "./package.json";
+import { version } from "../package.json";
 import { PNG } from "pngjs";
 import {
   parseCommandLineArguments,
@@ -8,12 +8,17 @@ import {
 } from "@neomura/js-command-line-helpers";
 
 runMain(async () => {
-  parseCommandLineArguments(Object.keys(bin)[0], version, description, {
-    strings: {},
-    integers: {},
-    enums: {},
-    booleans: {},
-  });
+  parseCommandLineArguments(
+    `neomura-phomemo-m110-png`,
+    version,
+    `convert png data from standard input into a stream which can be forwarded to a phomemo m110 label printer.`,
+    {
+      strings: {},
+      integers: {},
+      enums: {},
+      booleans: {},
+    }
+  );
 
   await new Promise<void>((resolve, reject) => {
     process.stdin
