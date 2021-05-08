@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "4.22.1",
     "cross-spawn": "7.0.3",
     "del-cli": "3.0.1",
-    "eslint": "7.25.0",
+    "eslint": "7.26.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "3.4.0",
     "jasmine": "3.7.0",
